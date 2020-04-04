@@ -22,6 +22,7 @@
 #include "visitor/gradient_visitor.hpp"
 #include "visitor/set_input_height_visitor.hpp"
 #include "visitor/set_input_width_visitor.hpp"
+#include "visitor/layer_name_visitor.hpp"
 
 #include <boost/serialization/variant.hpp>
 

@@ -289,7 +289,9 @@ class FFN
    * @param args The layer parameter.
    */
   template <class LayerType, class... Args>
-  void Add(Args... args) { network.push_back(new LayerType(args...)); }
+  void Add(Args... args) { network.push_back(new LayerType(args...));
+    std::cout << "Layer name[0]: " << boost::apply_visitor(LayerNameVisitor(network[0]));
+  }
 
   /*
    * Add a new module to the model.
