@@ -24,6 +24,7 @@
 #include "visitor/weight_size_visitor.hpp"
 #include "visitor/copy_visitor.hpp"
 #include "visitor/loss_visitor.hpp"
+#include "visitor/layer_name_visitor.hpp"
 
 #include "init_rules/network_init.hpp"
 
@@ -289,9 +290,7 @@ class FFN
    * @param args The layer parameter.
    */
   template <class LayerType, class... Args>
-  void Add(Args... args) { network.push_back(new LayerType(args...));
-    std::cout << "Layer name[0]: " << boost::apply_visitor(LayerNameVisitor(network[0]));
-  }
+  void Add(Args... args) { network.push_back(new LayerType(args...)); }
 
   /*
    * Add a new module to the model.
@@ -475,6 +474,8 @@ class FFN
 
   //! Locally-stored output parameter visitor.
   OutputParameterVisitor outputParameterVisitor;
+  LayerNameVisitor layerNameVisitor;
+
 
   //! Locally-stored weight size visitor.
   WeightSizeVisitor weightSizeVisitor;

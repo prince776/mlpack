@@ -90,6 +90,9 @@ class LeakyReLU
   //! Modify the non zero gradient.
   double& Alpha() { return alpha; }
 
+  //! Get the layer name.
+  std::string Name() { return std::string("Leaky ReLU"); }
+
   /**
    * Serialize the layer.
    */

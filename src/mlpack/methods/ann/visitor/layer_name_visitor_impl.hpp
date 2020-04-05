@@ -9,8 +9,8 @@
  * 3-clause BSD license along with mlpack.  If not, see
  * http://www.opensource.org/licenses/BSD-3-Clause for more information.
  */
-#ifndef MLPACK_METHODS_ANN_VISITOR_OUTPUT_PARAMETER_VISITOR_IMPL_HPP
-#define MLPACK_METHODS_ANN_VISITOR_OUTPUT_PARAMETER_VISITOR_IMPL_HPP
+#ifndef MLPACK_METHODS_ANN_VISITOR_LAYER_NAME_IMPL_VISITOR_HPP
+#define MLPACK_METHODS_ANN_VISITOR_LAYER_NAME_IMPL_VISITOR_HPP
 
 // In case it hasn't been included yet.
 #include "layer_name_visitor.hpp"
@@ -20,12 +20,12 @@ namespace ann {
 
 //! LayerNameVisitor visitor class.
 template<typename LayerType>
-inline std::string& LayerNameVisitor::operator()(LayerType *layer) const
+inline std::string LayerNameVisitor::operator()(LayerType *layer) const
 {
   return layer->Name();
 }
 
-inline std::string& LayerNameVisitor::operator()(MoreTypes layer) const
+inline std::string LayerNameVisitor::operator()(MoreTypes layer) const
 {
   return layer.apply_visitor(*this);
 }

@@ -24,14 +24,14 @@ namespace ann {
 /**
  * LayerNameVisitor exposes the name of the given module.
  */
-class LayerNameVisitor : public boost::static_visitor<arma::mat&>
+class LayerNameVisitor : public boost::static_visitor<std::string>
 {
  public:
   //! Return the output parameter set.
   template<typename LayerType>
-  std::string& operator()(LayerType* layer) const;
+  std::string operator()(LayerType* layer) const;
 
-  std::stringarma::mat& operator()(MoreTypes layer) const;
+  std::string operator()(MoreTypes layer) const;
 };
 
 } // namespace ann
