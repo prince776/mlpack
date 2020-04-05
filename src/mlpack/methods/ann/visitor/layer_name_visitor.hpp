@@ -27,11 +27,26 @@ namespace ann {
 class LayerNameVisitor : public boost::static_visitor<std::string>
 {
  public:
-  //! Return the output parameter set.
+  //! Return the output width.
   template<typename LayerType>
   std::string operator()(LayerType* layer) const;
 
   std::string operator()(MoreTypes layer) const;
+
+ private:
+  //! Return "unknown" if the module doesn't implement the Name()
+  //! function.
+  template<typename T>
+  typename std::enable_if<
+      !HasName<T, std::string&(T::*)()>::value, std::string>::type
+  LayerName(T* layer) const;
+
+  //! Return the name if the module implements the Name()
+  //! function.
+  template<typename T>
+  typename std::enable_if<
+      HasName<T, std::string&(T::*)()>::value, std::string>::type
+  LayerName(T* layer) const;
 };
 
 } // namespace ann

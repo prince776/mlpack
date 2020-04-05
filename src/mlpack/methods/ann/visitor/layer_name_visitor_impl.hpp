@@ -20,14 +20,30 @@ namespace ann {
 
 //! LayerNameVisitor visitor class.
 template<typename LayerType>
-inline std::string LayerNameVisitor::operator()(LayerType *layer) const
+inline std::string LayerNameVisitor::operator()(LayerType* layer) const
 {
-  return layer->Name();
+  return LayerName(layer);
 }
 
 inline std::string LayerNameVisitor::operator()(MoreTypes layer) const
 {
   return layer.apply_visitor(*this);
+}
+
+template<typename T>
+inline typename std::enable_if<
+    !HasName<T, std::string&(T::*)()>::value, std::string>::type
+LayerNameVisitor::LayerName(T* /* layer */) const
+{
+  return "unnamed";
+}
+
+template<typename T>
+inline typename std::enable_if<
+    HasName<T, std::string&(T::*)()>::value, std::string>::type
+LayerNameVisitor::LayerName(T* layer) const
+{
+  return layer->Name();
 }
 
 } // namespace ann

@@ -104,7 +104,7 @@ class HardTanH
   double& MinValue() { return minValue; }
 
   //! Modify the maximum value.
-  std::string Name() { return std::string("hard_tanh"); }
+  std::string Name() const { return std::string("hard_tanh"); }
 
   /**
    * Serialize the layer.

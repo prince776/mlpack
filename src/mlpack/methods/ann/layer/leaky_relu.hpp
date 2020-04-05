@@ -91,7 +91,7 @@ class LeakyReLU
   double& Alpha() { return alpha; }
 
   //! Get the layer name.
-  std::string Name() { return std::string("Leaky ReLU"); }
+  std::string Name() const { return std::string("Leaky ReLU"); }
 
   /**
    * Serialize the layer.
