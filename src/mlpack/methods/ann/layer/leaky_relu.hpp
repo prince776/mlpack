@@ -90,8 +90,10 @@ class LeakyReLU
   //! Modify the non zero gradient.
   double& Alpha() { return alpha; }
 
-  //! Get the layer name.
-  std::string Name() const { return std::string("Leaky ReLU"); }
+  //! Get the non zero gradient.
+  const std::string& Name() const { return name; }
+  //! Modify the non zero gradient.
+  std::string& Name() { return name; }
 
   /**
    * Serialize the layer.
@@ -108,6 +110,9 @@ class LeakyReLU
 
   //! Leakyness Parameter in the range 0 <alpha< 1
   double alpha;
+  
+  std::string name;
+  
 }; // class LeakyReLU
 
 } // namespace ann

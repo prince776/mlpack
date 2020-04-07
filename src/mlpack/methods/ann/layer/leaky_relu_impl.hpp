@@ -22,7 +22,7 @@ namespace ann /** Artificial Neural Network. */ {
 
 template<typename InputDataType, typename OutputDataType>
 LeakyReLU<InputDataType, OutputDataType>::LeakyReLU(
-    const double alpha) : alpha(alpha)
+    const double alpha) : alpha(alpha), name("LeayReLU")
 {
   // Nothing to do here.
 }

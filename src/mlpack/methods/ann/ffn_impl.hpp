@@ -44,7 +44,7 @@ FFN<OutputLayerType, InitializationRuleType, CustomLayers...>::FFN(
 {
   /* Nothing to do here. */
   Add<LeakyReLU<>>();
-  std::cout << "Layer Name Visitor: " << boost::apply_visitor(layerNameVisitor, network.begin()) << "\n";
+  std::cout << "Layer name: " << boost::apply_visitor(layerNameVisitor, network.front()) << std::endl;
 }
 
 template<typename OutputLayerType, typename InitializationRuleType,
